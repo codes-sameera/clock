@@ -33,8 +33,8 @@ public class LoggingAspect {
     /**
      * Pointcut that matches all service and controller beans.
      */
-    @Pointcut(" within(com.mettle.userfeaturemanager.service..*)" +
-            " || within(com.mettle.userfeaturemanager.controller..*)")
+    @Pointcut(" within(com.sam.clock.service..*)" +
+            " || within(com.sam.clock.controller..*)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
     }
