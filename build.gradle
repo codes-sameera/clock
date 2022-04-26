@@ -20,6 +20,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	implementation 'com.beust:jcommander:1.82'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.7'
 	compileOnly 'org.projectlombok:lombok'

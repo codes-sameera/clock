@@ -1,6 +1,7 @@
 package com.sam.clock.cli;
 
 import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
 import com.sam.clock.cli.command.Command;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,8 +21,13 @@ public class ClockCLI implements CommandLineRunner {
         JCommander.Builder builder = JCommander.newBuilder().programName("clock-cli");
         commands.forEach(builder::addCommand);
         JCommander jc = builder.build();
-        jc.parse(args);
-        Optional<Command> command = commands.stream().filter(c -> c.commandName().equals(jc.getParsedCommand())).findFirst();
-        command.ifPresentOrElse(Command::run, jc::usage);
+        try {
+            jc.parse(args);
+            Optional<Command> command = commands.stream().filter(c -> c.commandName().equals(jc.getParsedCommand())).findFirst();
+            command.ifPresentOrElse(Command::run, jc::usage);
+        }
+        catch (ParameterException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

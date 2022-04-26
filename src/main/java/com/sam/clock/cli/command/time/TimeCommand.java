@@ -1,6 +1,7 @@
 package com.sam.clock.cli.command.time;
 
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
 import com.beust.jcommander.Parameters;
 import com.sam.clock.cli.command.Command;
 import com.sam.clock.util.TimeFormatUtils;
@@ -25,6 +26,11 @@ public class TimeCommand implements Command {
 
     @Override
     public void run() {
-        System.out.println(TimeFormatUtils.convert(TimeFormatUtils.parse(timeInNumericFormat)));
+        try {
+            System.out.println(TimeFormatUtils.convert(TimeFormatUtils.parse(timeInNumericFormat)));
+        }
+        catch (IllegalArgumentException e) {
+            throw new ParameterException(e.getMessage());
+        }
     }
 }

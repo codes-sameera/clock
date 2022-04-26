@@ -2,12 +2,14 @@ package com.sam.clock.util;
 
 import com.sam.clock.model.TimeIn24HourFormat;
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalTime;
 import java.util.Locale;
 
 @UtilityClass
+@Slf4j
 public class TimeFormatUtils {
 
     private final String[] num = {
@@ -30,6 +32,7 @@ public class TimeFormatUtils {
     public TimeIn24HourFormat parse (String time) {
 
         if (time == null) {
+            log.debug("Time is null, using current time.");
             LocalTime now = LocalTime.now();
             return new TimeIn24HourFormat(now.getHour(), now.getMinute());
         }
@@ -42,9 +45,11 @@ public class TimeFormatUtils {
             m = Integer.parseInt(timeArray[1]);
         }
         catch (Exception e) {
-            throw new IllegalArgumentException("Input is not a valid 24-hour format time");
+            log.debug("Input is not a valid 24-hour format time.");
+            throw new IllegalArgumentException("Input is not a valid 24-hour format time.");
         }
         if (h > 23 || m > 59 || h < 0 || m < 0) {
+            log.debug("The hour should be between 0 and 23; the minute should be between 0 and 59.");
             throw new IllegalArgumentException("The hour should be between 0 and 23; the minute should be between 0 and 59.");
         }
         return new TimeIn24HourFormat (h, m);
