@@ -47,6 +47,7 @@ The user-feature-manager exposes the following APIs:
 - The REST API responds with an ```ErrorMessage``` object on invalid input
 
 ### Developer Notes
+- JavaDocs are added for every public class that can be used as an API
 - **The CI**
     - Builds on every commit to the master and on every pull request to the master
     - Executes gradle build, i.e., compilation and unit tests
