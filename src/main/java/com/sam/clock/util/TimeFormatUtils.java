@@ -66,25 +66,26 @@ public class TimeFormatUtils {
         StringBuilder timeInHumanFormat = new StringBuilder();
         int m = timeIn24HourFormat.getMinute();
         int h = timeIn24HourFormat.getHour();
+        int h12 = h % 12;
         switch (m) {
             case 0:
-                timeInHumanFormat.append(num[h % 12]).append(" o'clock");
+                timeInHumanFormat.append(num[h12]).append(" o'clock");
                 break;
             case  15:
-                timeInHumanFormat.append("Quarter past ").append(num[h % 12]);
+                timeInHumanFormat.append("Quarter past ").append(num[h12]);
                 break;
             case  30:
-                timeInHumanFormat.append("Half past ").append(num[h % 12]);
+                timeInHumanFormat.append("Half past ").append(num[h12]);
                 break;
             case  45:
-                timeInHumanFormat.append("Quarter to ").append(num[(h % 12) + 1]);
+                timeInHumanFormat.append("Quarter to ").append(num[h12 + 1]);
                 break;
             default:
                 if (m < 30) {
-                    timeInHumanFormat.append(num[m]).append(" past ").append(num[h % 12]);
+                    timeInHumanFormat.append(num[m]).append(" past ").append(num[h12]);
                 }
                 else {
-                    timeInHumanFormat.append(num[60 - m]).append(" to ").append(num[(h % 12) + 1]);
+                    timeInHumanFormat.append(num[60 - m]).append(" to ").append(num[h12 + 1]);
                 }
         }
 
