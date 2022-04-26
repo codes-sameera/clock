@@ -4,6 +4,7 @@ import com.sam.clock.model.TimeIn24HourFormat;
 import lombok.experimental.UtilityClass;
 import org.springframework.util.StringUtils;
 
+import java.time.LocalTime;
 import java.util.Locale;
 
 @UtilityClass
@@ -20,7 +21,19 @@ public class TimeFormatUtils {
             "Twenty eight", "Twenty nine"
     };
 
+    /**
+     * Parses the time string to a TimeIn24HourFormat object.
+     * If time string is null, creates a TimeIn24HourFormat object with current time.
+     * @param time - numeric format time to parse.
+     * @return the TimeIn24HourFormat object.
+     */
     public TimeIn24HourFormat parse (String time) {
+
+        if (time == null) {
+            LocalTime now = LocalTime.now();
+            return new TimeIn24HourFormat(now.getHour(), now.getMinute());
+        }
+
         int h;
         int m;
         try {
@@ -37,6 +50,13 @@ public class TimeFormatUtils {
         return new TimeIn24HourFormat (h, m);
     }
 
+
+    /**
+     * Converts the timeIn24HourFormat object to a human format time string.<br><br/>
+     * Example: If input is 22:35, output is Twenty five to eleven in the evening.<br><br/>
+     * @param timeIn24HourFormat - timeIn24HourFormat object to parse.
+     * @return the human format time string.
+     */
     public String convert(TimeIn24HourFormat timeIn24HourFormat) {
         StringBuilder timeInHumanFormat = new StringBuilder();
         int m = timeIn24HourFormat.getMinute();

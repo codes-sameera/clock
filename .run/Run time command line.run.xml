@@ -4,7 +4,7 @@
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="MAIN_CLASS_NAME" value="com.sam.clock.ClockApplication" />
     <module name="clock.main" />
-    <option name="PROGRAM_PARAMETERS" value="time -n 25:23" />
+    <option name="PROGRAM_PARAMETERS" value="time -n 22:23" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

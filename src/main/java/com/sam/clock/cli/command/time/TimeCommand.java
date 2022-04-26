@@ -3,11 +3,8 @@ package com.sam.clock.cli.command.time;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import com.sam.clock.cli.command.Command;
-import com.sam.clock.model.TimeIn24HourFormat;
 import com.sam.clock.util.TimeFormatUtils;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalTime;
 
 @Component
 @Parameters(commandNames = TimeCommand.COMMAND_NAME, commandDescription = "Time command, displays time (current or optionally input in numeric format) in human readable format")
@@ -28,12 +25,6 @@ public class TimeCommand implements Command {
 
     @Override
     public void run() {
-        if (timeInNumericFormat != null) {
-            System.out.println(TimeFormatUtils.convert(TimeFormatUtils.parse(timeInNumericFormat)));
-        }
-        else {
-            LocalTime now = LocalTime.now();
-            System.out.println(TimeFormatUtils.convert(new TimeIn24HourFormat(now.getHour(), now.getMinute())));
-        }
+        System.out.println(TimeFormatUtils.convert(TimeFormatUtils.parse(timeInNumericFormat)));
     }
 }
