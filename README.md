@@ -1,5 +1,5 @@
 # clock
-Simple application that outputs the time is a human format- i.e., in words
+Simple application that outputs the time in a human format- i.e., in words
 
 ### Features
 - CLI for returning the current time as "Human Friendly Text" **(Objective 1)**
