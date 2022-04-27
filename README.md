@@ -23,10 +23,10 @@ The user-feature-manager exposes the following APIs:
 ![](images/api.png?raw=true "Title")
 
 ### Running and using the app
-- The easiest way to get the service up is by running the docker 
+- The easiest way to get the application up is by running the docker 
   - ```docker run sameeracodes/clock``` - prints the current time to the console
   - ```docker run sameeracodes/clock -n <hh>:<mm>``` - prints the arbitrary Numeric Time to the console
-- Alternatively, the jar can be build after downloading the source using - ```gradlew build```, and then executed
+- Alternatively, the jar can be built after downloading the source using - ```gradlew build```, and then executed
 - Alternatively, ```gradlew bootrun``` can also be executed after downloading the source
 - API Documentation is available at http://localhost:8080/clock/swagger-ui/index.html
   - Hit the http://localhost:8080/clock/time to get the current time as response
@@ -47,7 +47,8 @@ The user-feature-manager exposes the following APIs:
 - The REST API responds with an ```ErrorMessage``` object on invalid input
 
 ### Developer Notes
-- JavaDocs are added for every public class that can be used as an API
+- Intellij was the SDE used, run configurations are available to execute the app
+- **JavaDocs** are added for every public class that can be used as an API
 - **The CI**
     - Builds on every commit to the master and on every pull request to the master
     - Executes gradle build, i.e., compilation and unit tests
